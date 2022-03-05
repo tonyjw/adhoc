@@ -1,10 +1,11 @@
-import type { NextPage, GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Layout from '../components/layout'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import { getSortedAdHocs } from '../lib/adhocs'
 
-export const getStaticProps: GetStaticProps = async context => {
+export const getStaticProps: GetStaticProps = async () => {
   const allAdhocsData = getSortedAdHocs()
 
   return {
@@ -14,7 +15,14 @@ export const getStaticProps: GetStaticProps = async context => {
   }
 }
 
-const Home: NextPage = ({ allAdhocsData }) => {
+export default function Home({ 
+  allAdhocsData 
+}: {
+  allAdhocsData: {
+    id: string
+    title: string
+  }[]
+}) {
   return (
     <Layout home>
       <Head>
@@ -35,7 +43,10 @@ const Home: NextPage = ({ allAdhocsData }) => {
         <ul>
           {allAdhocsData.map(({ id, title }) => (
             <li key={id}>
-              {title}
+              <Link href={`/adhocs/${id}`}>
+                <a>{title}</a>
+              </Link>
+              
             </li>
           ))}
         </ul>
@@ -44,5 +55,3 @@ const Home: NextPage = ({ allAdhocsData }) => {
     </Layout>
   )
 }
-
-export default Home
