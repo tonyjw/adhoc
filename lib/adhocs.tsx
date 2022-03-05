@@ -45,7 +45,7 @@ export function getAllAdhocIds() {
   })
 }
 
-export async function getAdhocData(id) {
+export async function getAdhocData(id: string) {
   const fullPath = path.join(adhocsDirectory, `${id}.json`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const jsonFileContents = JSON.parse(fileContents)

@@ -1,5 +1,6 @@
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { getAdhocData, getAllAdhocIds } from '../../lib/adhocs'
+import { formatStory } from '../../lib/story-formatter'
 import Head from 'next/head'
 import Layout from '../../components/layout'
 import Blank from '../../components/blank'
@@ -15,7 +16,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const adhocData = await getAdhocData(params.id as string)
+  const adhocData = await getAdhocData(params?.id as string)
   return {
     props: {
       adhocData
@@ -66,7 +67,7 @@ export default function Adhoc({
           ))}
         </ul>
 
-        <Story content={adhocData.story} blanks={blanks} />
+        <Story content={formatStory(adhocData.story, blanks)} />
       </article>
     </Layout>
   )
