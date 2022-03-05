@@ -1,18 +1,27 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Layout from '../components/layout'
 import styles from '../styles/Home.module.css'
+import { getSortedAdHocs } from '../lib/adhocs'
 
-const Home: NextPage = () => {
+export const getStaticProps: GetStaticProps = async context => {
+  const allAdhocsData = getSortedAdHocs()
+
+  return {
+    props: {
+      allAdhocsData
+    }
+  }
+}
+
+const Home: NextPage = ({ allAdhocsData }) => {
   return (
     <Layout home>
       <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Adhoc - The story generator for kids" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Adhoc - Home</title>
       </Head>
 
-      <main className={styles.main}>
+      <section>
         <h1 className={styles.title}>
           adhoc
         </h1>
@@ -20,8 +29,18 @@ const Home: NextPage = () => {
         <p className={styles.description}>
         the story generator for kids
         </p>
+      </section>
 
-      </main>
+      <section>
+        <ul>
+          {allAdhocsData.map(({ id, title }) => (
+            <li key={id}>
+              {title}
+            </li>
+          ))}
+        </ul>
+      </section>
+
     </Layout>
   )
 }

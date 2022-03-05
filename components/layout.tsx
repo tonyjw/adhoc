@@ -21,7 +21,9 @@ function Layout({
         />
         <meta name="og:title" content={siteDescription} />
       </Head>
-      <main>{children}</main>
+      <main className={styles.main}>
+        {children}
+      </main>
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
