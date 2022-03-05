@@ -2,6 +2,9 @@ import type { GetStaticPaths, GetStaticProps } from 'next'
 import { getAdhocData, getAllAdhocIds } from '../../lib/adhocs'
 import Head from 'next/head'
 import Layout from '../../components/layout'
+import Blank from '../../components/blank'
+import Story from '../../components/story'
+import React from 'react'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllAdhocIds()
@@ -26,9 +29,27 @@ export default function Adhoc({
   adhocData: {
     title: string
     story: string
-    parameters: string[]
+    blanks: any[]
   }
 }) {
+
+  const [blanks, setBlanks] = React.useState(adhocData.blanks)
+
+  function handleBlankUpdate(id: string, e: any) {
+    const nextBlanks = blanks.map((blank, i) => {
+      if (blank.id == id) {
+        return {
+          ...blank,
+          value: e.currentTarget.value
+        }
+      } else {
+        // the rest haven't changed
+        return blank
+      }
+    })
+    setBlanks(nextBlanks)
+  }
+
   return (
     <Layout>
       <Head>
@@ -38,14 +59,14 @@ export default function Adhoc({
         <h1>{adhocData.title}</h1>
 
         <ul>
-          {adhocData.parameters.map((parameter) => (
-            <li>
-              {parameter}
+          {adhocData.blanks.map(({ id, blankType }) => (
+            <li key={id}>
+              <Blank id={id} blankType={blankType} onBlankChange={handleBlankUpdate} />
             </li>
           ))}
         </ul>
 
-        <div dangerouslySetInnerHTML={{ __html: adhocData.story }} />
+        <Story content={adhocData.story} blanks={blanks} />
       </article>
     </Layout>
   )

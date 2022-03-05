@@ -1,9 +1,9 @@
 {
   "title": "Very chilly",
-  "parameters": [
-    "adjective",
-    "noun",
-    "verb"
+  "blanks": [
+    { "id": 0, "blankType": "adjective" },
+    { "id": 1, "blankType": "noun" },
+    { "id": 2, "blankType": "verb" }
   ],
   "story": "This is a story of the very %s %s that could % when it was cold outside."
 }
