@@ -25,7 +25,8 @@ export default function Adhoc({
 }: {
   adhocData: {
     title: string
-    contentHtml: string
+    story: string
+    parameters: string[]
   }
 }) {
   return (
@@ -35,7 +36,16 @@ export default function Adhoc({
       </Head>
       <article>
         <h1>{adhocData.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: adhocData.contentHtml }} />
+
+        <ul>
+          {adhocData.parameters.map((parameter) => (
+            <li>
+              {parameter}
+            </li>
+          ))}
+        </ul>
+
+        <div dangerouslySetInnerHTML={{ __html: adhocData.story }} />
       </article>
     </Layout>
   )

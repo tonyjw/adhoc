@@ -1,0 +1,9 @@
+{
+  "title": "Very chilly",
+  "parameters": [
+    "adjective",
+    "noun",
+    "verb"
+  ],
+  "story": "This is a story of the very %s %s that could % when it was cold outside."
+}
