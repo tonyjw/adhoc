@@ -1,4 +1,4 @@
-export default function Blank({ 
+export default function Story({ 
   content,
   blanks
 }: {
