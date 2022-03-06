@@ -5,5 +5,5 @@
     { "id": 1, "blankType": "noun" },
     { "id": 2, "blankType": "verb" }
   ],
-  "story": "This is a story of the very %s %s that could % when it was cold outside."
+  "story": "This is a story of the very {0} {1} that could {2} when it was cold outside."
 }
