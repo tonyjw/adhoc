@@ -1,9 +1,0 @@
-{
-  "title": "Neighborhood Antics",
-  "blanks": [
-    { "id": 0, "blankType": "adjective" },
-    { "id": 1, "blankType": "noun" },
-    { "id": 2, "blankType": "noun" }
-  ],
-  "story": "This is a story of the very {0} {1} that showed up in our neighborhood's {2} one day."
-}
