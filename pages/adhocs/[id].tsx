@@ -58,7 +58,7 @@ export default function Adhoc({
         <title>{adhocData.title}</title>
       </Head>
       <article>
-        <h1>{adhocData.title}</h1>
+        <h1 className={styles.storyTitle}>{adhocData.title}</h1>
 
         <ul className={styles.blanksList}>
           {adhocData.blanks.map(({ id, blankType }) => (

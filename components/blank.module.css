@@ -1,6 +1,7 @@
 .vertical {
   display: flex;
   flex-direction: column;
+  font-family: "Fredoka One", sans-serif;
 }
 
 .blankInput {
