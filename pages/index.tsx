@@ -2,6 +2,7 @@ import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Layout from '../components/layout'
 import Link from 'next/link'
+import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { getSortedAdHocs } from '../lib/adhocs'
 
@@ -30,6 +31,9 @@ export default function Home({
       </Head>
 
       <section>
+        <div className={styles.logo}>
+          <Image src="/favicon.png" width={75} height={75} />
+        </div>
         <h1 className={styles.title}>
           adhoc
         </h1>
