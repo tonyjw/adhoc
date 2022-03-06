@@ -1,3 +1,5 @@
+import styles from './blank.module.css'
+
 export default function Blank({ 
   id,
   blankType,
@@ -8,8 +10,11 @@ export default function Blank({
   onBlankChange: any
 }) {
   return (
-    <input type="text" placeholder={blankType} onChange={(e) => {
-      onBlankChange(id, e)
-    }} />
+    <label className={styles.vertical}>
+      {blankType}
+      <input className={styles.blankInput} type="text" placeholder={blankType} onChange={(e) => {
+        onBlankChange(id, e)
+      }} />
+    </label>
   )
 }

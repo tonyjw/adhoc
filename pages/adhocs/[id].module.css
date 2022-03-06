@@ -1,0 +1,8 @@
+.blanksList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.blankListItem {
+  margin: 1em 0;
+}

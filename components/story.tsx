@@ -1,3 +1,5 @@
+import styles from './story.module.css'
+
 export default function Story({ 
   content
 }: {
@@ -5,7 +7,7 @@ export default function Story({
 }) {
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div className={styles.story} dangerouslySetInnerHTML={{ __html: content }} />
     </>
   )
 }

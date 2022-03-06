@@ -1,0 +1,11 @@
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.blankInput {
+  height: 3em;
+  font-size: 1em;
+  padding: 10px;
+  margin: 10px 0 0;
+}

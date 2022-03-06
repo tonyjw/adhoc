@@ -6,6 +6,7 @@ import Layout from '../../components/layout'
 import Blank from '../../components/blank'
 import Story from '../../components/story'
 import React from 'react'
+import styles from './[id].module.css'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllAdhocIds()
@@ -59,9 +60,9 @@ export default function Adhoc({
       <article>
         <h1>{adhocData.title}</h1>
 
-        <ul>
+        <ul className={styles.blanksList}>
           {adhocData.blanks.map(({ id, blankType }) => (
-            <li key={id}>
+            <li key={id} className={styles.blankListItem}>
               <Blank id={id} blankType={blankType} onBlankChange={handleBlankUpdate} />
             </li>
           ))}
