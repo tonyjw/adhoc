@@ -1,0 +1,20 @@
+{
+  "title": "The Woods",
+  "blanks": [
+    { "id": 0, "blankType": "animal" },
+    { "id": 1, "blankType": "pronoun" },
+    { "id": 2, "blankType": "number" },
+    { "id": 3, "blankType": "noun" },
+    { "id": 4, "blankType": "verb" },
+    { "id": 5, "blankType": "adjective" },
+    { "id": 6, "blankType": "member of the family" },
+    { "id": 7, "blankType": "verb" },
+    { "id": 8, "blankType": "adjective" },
+    { "id": 9, "blankType": "adjective" },
+    { "id": 10, "blankType": "animal" },
+    { "id": 11, "blankType": "verb (past tense)" },
+    { "id": 12, "blankType": "verb" },
+    { "id": 13, "blankType": "place" }
+  ],
+  "story": "There once was a baby {0}. {1} lived next to {2} friends who always went on adventures together. Sometimes they got into {3}. One time they {4} and {4} and {4} until they came to a {5} forest. Their {6} told them never to go in there but they didn't listen. They {7} into the woods where they heard a {8} noise. That's when they saw it - a {9} {10}! They were so scared they {11} away! They {12} all the way back to {13} and never talked about their adventure again."
+}
