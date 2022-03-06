@@ -32,7 +32,7 @@ export default function Home({
 
       <section>
         <div className={styles.logo}>
-          <Image src="/favicon.png" width={100} height={100} />
+          <Image src="/favicon.png" width={100} height={100} alt="Adhoc logo - open book" />
         </div>
         <h1 className={styles.title}>
           adhoc
