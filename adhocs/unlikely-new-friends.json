@@ -1,0 +1,19 @@
+{
+  "title": "Unlikely New Friends",
+  "blanks": [
+    { "id": 0, "blankType": "animal" },
+    { "id": 1, "blankType": "animal" },
+    { "id": 2, "blankType": "child's game" },
+    { "id": 3, "blankType": "place" },
+    { "id": 4, "blankType": "adjective" },
+    { "id": 5, "blankType": "adjective" },
+    { "id": 6, "blankType": "verb (past tense)" },
+    { "id": 7, "blankType": "verb (past tense)" },
+    { "id": 8, "blankType": "place" },
+    { "id": 9, "blankType": "meal" },
+    { "id": 10, "blankType": "food" },
+    { "id": 11, "blankType": "food" },
+    { "id": 12, "blankType": "food" }
+  ],
+  "story": "You'd never believe me if I told you that an {0} and an {1} could be friends. But I am not lying! I saw them playing {2} in the {3} near my house. One was so {4} and other one so {5} that I don't blame you for not believing me. They {6} and {7} and were having so much fun together. I invited them over to my {8} where we had a big {9} with {10}, {11} and {12}. "
+}
