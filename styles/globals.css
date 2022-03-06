@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.blank {
+  font-weight: bold;
+  text-decoration: underline;
+}
