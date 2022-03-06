@@ -12,7 +12,7 @@ export default function Blank({
   return (
     <label className={styles.vertical}>
       {blankType}
-      <input className={styles.blankInput} type="text" placeholder={blankType} onChange={(e) => {
+      <input className={styles.blankInput} type="text" autoCapitalize="off" placeholder={blankType} onChange={(e) => {
         onBlankChange(id, e)
       }} />
     </label>
