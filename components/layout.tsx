@@ -27,7 +27,7 @@ function Layout({
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
-            <a>← Back to home</a>
+            <a className='button'>← Back to home</a>
           </Link>
         </div>
       )}

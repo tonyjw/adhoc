@@ -40,11 +40,11 @@ export default function Home({
       </section>
 
       <section>
-        <ul>
+        <ul className={styles.adhocList}>
           {allAdhocsData.map(({ id, title }) => (
             <li key={id}>
               <Link href={`/adhocs/${id}`}>
-                <a>{title}</a>
+                <a className='button'>{title}</a>
               </Link>
               
             </li>
