@@ -11,7 +11,7 @@
     { "id": 7, "blankType": "person" },
     { "id": 8, "blankType": "place outside" },
     { "id": 9, "blankType": "verb" },
-    { "id": 10, "blankType": "verb" },
+    { "id": 10, "blankType": "verb (past tense)" },
     { "id": 11, "blankType": "name" }
   ],
   "story": "My {0} and I were playing inside on a {1}, {2} day. That's when we saw an animal that we hadn't seen before! An {3} flew over our house and landed on a {4} outside. It was making a {5} and {6} sound that woke up the sleeping {7} upstairs. It was watching the {8}, looking for things to {9}. I turned to my {0} and {10} with joy! We named it {11}. "
