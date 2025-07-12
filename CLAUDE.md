@@ -4,11 +4,7 @@ This file provides context and instructions for AI assistants working on the Adh
 
 ## Project Overview
 
-Adhoc is a Mad Libs story generator with two distinct implementations:
-- **v1/**: Next.js/React/TypeScript implementation 
-- **v2/**: Vanilla HTML/CSS/JavaScript implementation
-
-Both versions create interactive Mad Libs games where users fill in words to complete humorous stories.
+Adhoc is a Mad Libs story generator built with vanilla HTML, CSS, and JavaScript. It creates interactive Mad Libs games where users fill in words to complete humorous stories. The application features a modern, child-friendly design with sound effects, local storage, and sharing capabilities.
 
 ## Repository Structure
 
@@ -16,73 +12,54 @@ Both versions create interactive Mad Libs games where users fill in words to com
 /
 ├── README.md              # Main project documentation
 ├── CLAUDE.md             # This file - AI assistant context
-├── v1/                   # Next.js implementation (archived)
-│   ├── package.json      # Next.js 12.1.0, React 17.0.2, TypeScript
-│   ├── pages/            # Next.js pages
-│   ├── components/       # React components
-│   ├── adhocs/           # Story JSON files (3 stories)
-│   └── styles/           # CSS modules
-└── v2/                   # Vanilla web implementation (current)
+├── docs/                 # Symlink to v2/ for GitHub Pages deployment
+├── v1/                   # Next.js implementation (archived - do not modify)
+└── v2/                   # Main application (focus all development here)
     ├── index.html        # Main application file
     ├── css/styles.css    # Complete styling with animations
     ├── js/app.js         # Application logic (~1000 lines)
+    ├── assets/           # SVG icons and static assets
     ├── data/             # Story templates (6 JSON files)
     └── README.md         # v2-specific documentation
 ```
 
 ## Development Commands
 
-### For v1 (Next.js):
-```bash
-cd v1
-npm install
-npm run dev          # Development server
-npm run build        # Production build
-npm run lint         # ESLint
-```
-
-### For v2 (Vanilla):
+### Local Development:
 ```bash
 cd v2
-# Option 1: Direct file access
+
+# Option 1: Direct file access (basic testing)
 open index.html
 
-# Option 2: Local server (recommended for development)
-python3 -m http.server 8080
+# Option 2: Local server (recommended for full functionality)
+python3 -m http.server 8081
 # or
-npx serve .
+npx serve . --listen 8081
+
+# If port 8081 is already in use, assume the site is already running
+# and test against the running instance at http://localhost:8081
 ```
 
-## Key Technologies
+### Port Conflict Handling:
+When the development server fails to start due to port 8081 being in use:
+- **Assume the site is already running** at http://localhost:8081
+- Run any tests or validation against the existing server
+- Do not attempt to start multiple servers or use different ports
+- Simply proceed with testing the application at the expected URL
 
-### v1 Stack:
-- Next.js 12.1.0
-- React 17.0.2
-- TypeScript 4.6.2
-- CSS Modules
-- ESLint
+## Technology Stack
 
-### v2 Stack:
-- HTML5 (semantic markup)
-- CSS3 (Grid, Flexbox, custom properties, animations)
-- Vanilla JavaScript ES6+ (classes, async/await, modules)
-- Web APIs (Local Storage, Web Audio, Navigator Share, Clipboard)
+- **HTML5**: Semantic markup with accessibility attributes
+- **CSS3**: Grid, Flexbox, custom properties, animations, responsive design
+- **Vanilla JavaScript ES6+**: Classes, async/await, modules, Web APIs
+- **Web APIs**: Local Storage, Web Audio API, Navigator Share, Clipboard API
+- **No external dependencies**: Self-contained application
 
-## Story Format Specifications
+## Story Format Specification
 
-### v1 Format (in v1/adhocs/):
-```json
-{
-  "title": "Story Title",
-  "blanks": [
-    { "id": 0, "blankType": "adjective" },
-    { "id": 1, "blankType": "noun" }
-  ],
-  "story": "A {0} {1} walked down the street."
-}
-```
+Stories are stored as JSON files in `v2/data/` with this structure:
 
-### v2 Format (in v2/data/):
 ```json
 {
   "id": "story-id",
@@ -99,83 +76,94 @@ npx serve .
 
 ## Code Style Guidelines
 
-### v1 (TypeScript/React):
-- Use TypeScript for type safety
-- React functional components with hooks
-- CSS Modules for scoped styling
-- ESLint configuration provided
+- **ES6+ classes and modern JavaScript**: Use async/await, arrow functions, destructuring
+- **CSS custom properties**: Use CSS variables for consistent theming
+- **Semantic HTML**: Include proper accessibility attributes (aria-labels, roles)
+- **No external dependencies**: Keep the application self-contained
+- **Mobile-first responsive design**: Ensure functionality on all device sizes
 
-### v2 (Vanilla):
-- ES6+ classes and modern JavaScript
-- CSS custom properties (CSS variables)
-- Semantic HTML with accessibility attributes
-- No external dependencies
-
-## Common Tasks
+## Common Development Tasks
 
 ### Adding New Stories:
-- **v1**: Add JSON file to `v1/adhocs/` using v1 format
-- **v2**: Add JSON file to `v2/data/` using v2 format, update theme loading in `app.js`
+1. Create new JSON file in `v2/data/` following the format specification
+2. Update the `themeFiles` array in `js/app.js` to include the new story
+3. Test loading and functionality
 
-### Testing:
-- **v1**: `npm run build` to check for TypeScript/build errors
-- **v2**: Serve locally and test in browser, check browser console for errors
+### Testing Changes:
+1. Serve locally: `cd v2 && python3 -m http.server 8081`
+2. Check browser console for JavaScript errors
+3. Test responsive design on mobile viewport
+4. Validate story JSON format
+5. Test accessibility features (keyboard navigation, screen reader compatibility)
 
-### Styling:
-- **v1**: Edit CSS modules in respective component directories
-- **v2**: Edit `v2/css/styles.css` (single file with CSS custom properties)
+### Styling Updates:
+- Edit `v2/css/styles.css` (single file with CSS custom properties)
+- Use existing CSS variables for consistent theming
+- Maintain child-friendly design aesthetic
+- Test animations and hover effects
 
-## Important Notes for AI Assistants
+## Important Development Guidelines
 
-### Development Approach:
-- **v1 is archived**: Only make changes if specifically requested for historical comparison
-- **v2 is active**: Primary development should focus on v2 unless otherwise specified
-- Both versions are educational examples showing different paradigms
+### Primary Focus:
+- **Work exclusively on v2**: Do not modify v1 unless specifically requested
+- **v1 is archived**: Historical reference only
+- **All new features and fixes go in v2**
 
-### When Working on v2:
-- Test changes by serving locally: `cd v2 && python3 -m http.server 8080`
-- Check browser console for JavaScript errors
-- Ensure responsive design works on mobile
-- Validate story JSON format matches specification
-- Test accessibility features (keyboard navigation)
+### Testing Protocol:
+1. **Always test locally** before considering changes complete
+2. **If port 8081 is in use**, assume site is running and test against it
+3. **Check browser console** for errors after changes
+4. **Test mobile responsiveness** using browser dev tools
+5. **Verify accessibility** with keyboard-only navigation
 
-### Performance Considerations:
-- **v1**: Next.js handles optimization automatically
-- **v2**: Keep bundle size minimal, avoid external dependencies
+### File Organization:
+- **Single HTML file**: `index.html` contains all markup
+- **Single CSS file**: `styles.css` contains all styling
+- **Single JS file**: `app.js` contains all application logic
+- **JSON data files**: Individual story files in `data/` directory
+- **Assets**: SVG icons and images in `assets/` directory
 
-### Browser Compatibility:
-- **v1**: Modern browsers (handled by Next.js)
-- **v2**: Chrome 60+, Firefox 55+, Safari 12+, Edge 79+
+## Color Scheme and Theming
 
-### Security:
-- Both versions are client-side only
-- No server-side code or user authentication
-- Local storage used for saving stories in v2
+Current color palette (defined in CSS custom properties):
+- **Primary**: `#e07a7a` (coral/pink for logo and buttons)
+- **Secondary**: `#7B68EE` (purple for icons and accents)
+- **Accent**: `#f5e6a8` (warm cream/yellow for backgrounds)
+- **Background**: `#f4f6e7` (pale yellow-green)
+- **Text**: `#4a4a4a` (dark gray/charcoal)
 
-## Debugging Tips
+## Features Overview
 
-### v1 Issues:
-- Check TypeScript compilation errors
-- Verify React component props and state
-- Use Next.js development tools
+- **6 Story Themes**: Space adventure, cooking disaster, office drama, etc.
+- **Progressive Word Input**: Step-by-step form with validation
+- **Local Storage**: Save and manage completed stories
+- **Sound Effects**: Web Audio API for button clicks and completion
+- **Sharing**: Native share API with clipboard fallback
+- **Keyboard Shortcuts**: Accessibility and power-user features
+- **Responsive Design**: Works on mobile, tablet, and desktop
+- **No Internet Required**: Fully functional offline
 
-### v2 Issues:
-- Check browser console for JavaScript errors
-- Verify JSON file format and fetch requests
-- Test Web API compatibility (Local Storage, Web Audio, etc.)
-- Use browser dev tools for CSS debugging
+## Browser Compatibility
 
-## Feature Comparison Quick Reference
+- **Chrome 60+**
+- **Firefox 55+** 
+- **Safari 12+**
+- **Edge 79+**
 
-| Feature | v1 | v2 |
-|---------|----|----|
-| Stories | 3 | 6 |
-| Save Stories | ❌ | ✅ |
-| Share Stories | ❌ | ✅ |
-| Sound Effects | ❌ | ✅ |
-| Progress Tracking | ❌ | ✅ |
-| Random Suggestions | ❌ | ✅ |
-| Keyboard Shortcuts | ❌ | ✅ |
-| Bundle Size | ~77KB | ~15KB |
+## Debugging Guidelines
 
-This context should help you understand the project structure and make appropriate decisions when assisting with development tasks.
+### Common Issues:
+- **JavaScript errors**: Check browser console for stack traces
+- **JSON format errors**: Validate story file syntax
+- **Web API failures**: Check browser support and permissions
+- **CSS layout issues**: Use browser dev tools for debugging
+- **Local storage limits**: Clear storage if quota exceeded
+
+### Development Tools:
+- **Browser Console**: Primary debugging interface
+- **Network Tab**: Monitor file loading and fetch requests
+- **Application Tab**: Inspect Local Storage data
+- **Responsive Mode**: Test mobile layouts
+- **Accessibility Inspector**: Verify screen reader compatibility
+
+This context should help you understand the project structure and focus development efforts exclusively on the v2 implementation.

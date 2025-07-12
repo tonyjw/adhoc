@@ -19,10 +19,10 @@ cd v2
 open index.html
 
 # Option 2: Use a local server (recommended for development)
-python3 -m http.server 8080
+python3 -m http.server 8081
 # or
 npx serve .
-# Open http://localhost:8080
+# Open http://localhost:8081
 ```
 
 ## ✨ Features

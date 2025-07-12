@@ -195,14 +195,16 @@ class AdhocApp {
         // Check if this is asking for a person's name and update the display
         const labelText = currentBlank.label.toLowerCase();
         let displayLabel = currentBlank.label;
-        let placeholderText = `Type your ${currentBlank.type} here...`;
+        let placeholderText = `Type ${currentBlank.label.toLowerCase()} here...`;
         
         if (labelText.includes('name') || labelText.includes('person')) {
             displayLabel = "person's name";
             placeholderText = 'Type a name here...';
         }
         
-        label.textContent = `Enter a ${displayLabel}:`;
+        // Determine correct article (a/an)
+        const article = this.getCorrectArticle(displayLabel);
+        label.textContent = `Enter ${article} ${displayLabel}:`;
         input.placeholder = placeholderText;
         input.value = this.currentWords[currentBlank.id] || '';
         
@@ -317,6 +319,18 @@ class AdhocApp {
         input.classList.remove('error');
     }
 
+    getCorrectArticle(word) {
+        // Check if word starts with vowel sound
+        const vowelSounds = /^[aeiouAEIOU]/;
+        // Special cases for words that start with 'u' but sound like 'yu'
+        const unicornCases = /^[uU]n/; // like "uniform", "university"
+        
+        if (vowelSounds.test(word) && !unicornCases.test(word)) {
+            return 'an';
+        }
+        return 'a';
+    }
+
     nextWord() {
         if (this.currentWordIndex < this.currentTheme.blanks.length - 1) {
             this.currentWordIndex++;
@@ -357,16 +371,108 @@ class AdhocApp {
             'plural noun': ['socks', 'bubbles', 'cookies', 'buttons', 'feathers', 'marbles', 'springs', 'jellybeans', 'mittens', 'shoelaces'],
             'emotion': ['excited', 'confused', 'amazed', 'delighted', 'puzzled', 'thrilled', 'surprised', 'cheerful', 'curious', 'ecstatic'],
             'number': ['42', '7', '99', '13', '1000', '3.14', '777', '21', '88', '365'],
-            'name': ['Alex', 'Sam', 'Jordan', 'Casey', 'Taylor', 'Riley', 'Morgan', 'Avery', 'Quinn', 'Sage', 'Max', 'Luna', 'Leo', 'Zoe', 'Kai']
+            'name': ['Alex', 'Sam', 'Jordan', 'Casey', 'Taylor', 'Riley', 'Morgan', 'Avery', 'Quinn', 'Sage', 'Max', 'Luna', 'Leo', 'Zoe', 'Kai'],
+            'room': ['kitchen', 'bedroom', 'bathroom', 'living room', 'basement', 'attic', 'garage', 'closet', 'pantry', 'office'],
+            'time of day': ['morning', 'afternoon', 'evening', 'night', 'dawn', 'dusk', 'midnight', 'noon', 'sunrise', 'sunset'],
+            'day of the week': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            'type of drink': ['water', 'juice', 'soda', 'milk', 'coffee', 'tea', 'smoothie', 'lemonade', 'hot chocolate', 'milkshake'],
+            'type of liquid': ['water', 'orange juice', 'milk', 'soda', 'soup', 'paint', 'oil', 'honey', 'syrup', 'sauce'],
+            'type of food': ['pizza', 'hamburger', 'spaghetti', 'sandwich', 'tacos', 'soup', 'salad', 'cake', 'cookies', 'ice cream'],
+            'kitchen appliance': ['oven', 'microwave', 'blender', 'toaster', 'mixer', 'refrigerator', 'dishwasher', 'coffee maker', 'food processor', 'stove'],
+            'office supplies': ['stapler', 'paperclips', 'pens', 'folders', 'notebooks', 'post-it notes', 'rulers', 'erasers', 'markers', 'scissors'],
+            'ingredient': ['flour', 'sugar', 'eggs', 'butter', 'vanilla', 'chocolate chips', 'salt', 'pepper', 'onions', 'garlic'],
+            'superhero name': ['Captain Thunder', 'Lightning Girl', 'Super Sam', 'Wonder Kid', 'Power Ranger', 'Fire Fox', 'Ice Queen', 'Speed Demon', 'Star Fighter', 'Storm Master'],
+            'villain name': ['Dr. Evil', 'Shadow Master', 'Dark Knight', 'Professor Chaos', 'The Destroyer', 'Night Crawler', 'Storm Bringer', 'Fire Demon', 'Ice King', 'Mind Bender'],
+            'small animal': ['squirrel', 'rabbit', 'mouse', 'hamster', 'chipmunk', 'ferret', 'guinea pig', 'hedgehog', 'rat', 'gerbil'],
+            'bird or small animal': ['robin', 'sparrow', 'cardinal', 'blue jay', 'chickadee', 'mouse', 'squirrel', 'chipmunk', 'hamster', 'rabbit'],
+            'type of animal': ['dog', 'cat', 'elephant', 'giraffe', 'lion', 'tiger', 'bear', 'monkey', 'zebra', 'kangaroo'],
+            'large place or building': ['mall', 'stadium', 'airport', 'hospital', 'school', 'library', 'museum', 'castle', 'skyscraper', 'cathedral'],
+            'type of building': ['house', 'apartment', 'school', 'hospital', 'store', 'restaurant', 'library', 'museum', 'office building', 'factory'],
+            'place in building': ['elevator', 'lobby', 'bathroom', 'stairwell', 'cafeteria', 'office', 'meeting room', 'storage room', 'break room', 'reception'],
+            'place outdoors': ['park', 'beach', 'forest', 'mountain', 'lake', 'river', 'field', 'garden', 'playground', 'camping site'],
+            'outdoor area': ['backyard', 'garden', 'patio', 'deck', 'lawn', 'driveway', 'sidewalk', 'park', 'field', 'forest'],
+            'place animals live': ['nest', 'den', 'burrow', 'cave', 'tree', 'barn', 'shed', 'doghouse', 'cage', 'aquarium'],
+            'large object': ['truck', 'building', 'tree', 'boulder', 'ship', 'airplane', 'statue', 'mountain', 'bridge', 'tower'],
+            'tool or object': ['hammer', 'screwdriver', 'wrench', 'flashlight', 'rope', 'ladder', 'shovel', 'scissors', 'knife', 'bucket'],
+            'abstract concept': ['love', 'happiness', 'friendship', 'courage', 'wisdom', 'justice', 'peace', 'freedom', 'hope', 'creativity']
         };
         
         // Find matching word type - improved logic
         let wordType = currentBlank.type.toLowerCase().trim();
         const labelText = currentBlank.label.toLowerCase();
         
-        // Check if this is asking for a person's name
+        // Check for specific label matches first
         if (labelText.includes('name') || labelText.includes('person')) {
             wordType = 'name';
+        }
+        else if (labelText.includes('room')) {
+            wordType = 'room';
+        }
+        else if (labelText.includes('time of day') || labelText === 'time of day') {
+            wordType = 'time of day';
+        }
+        else if (labelText.includes('day of the week') || labelText === 'day of the week') {
+            wordType = 'day of the week';
+        }
+        else if (labelText.includes('type of drink') || labelText === 'type of drink') {
+            wordType = 'type of drink';
+        }
+        else if (labelText.includes('type of liquid') || labelText === 'type of liquid') {
+            wordType = 'type of liquid';
+        }
+        else if (labelText.includes('type of food') || labelText === 'type of food') {
+            wordType = 'type of food';
+        }
+        else if (labelText.includes('kitchen appliance') || labelText === 'kitchen appliance') {
+            wordType = 'kitchen appliance';
+        }
+        else if (labelText.includes('office supplies') || labelText === 'office supplies') {
+            wordType = 'office supplies';
+        }
+        else if (labelText.includes('ingredient') || labelText === 'ingredient') {
+            wordType = 'ingredient';
+        }
+        else if (labelText.includes('superhero name') || labelText === 'superhero name') {
+            wordType = 'superhero name';
+        }
+        else if (labelText.includes('villain name') || labelText === 'villain name') {
+            wordType = 'villain name';
+        }
+        else if (labelText.includes('small animal') || labelText === 'small animal') {
+            wordType = 'small animal';
+        }
+        else if (labelText.includes('bird or small animal') || labelText === 'bird or small animal') {
+            wordType = 'bird or small animal';
+        }
+        else if (labelText.includes('type of animal') || labelText === 'type of animal') {
+            wordType = 'type of animal';
+        }
+        else if (labelText.includes('large place or building') || labelText === 'large place or building') {
+            wordType = 'large place or building';
+        }
+        else if (labelText.includes('type of building') || labelText === 'type of building') {
+            wordType = 'type of building';
+        }
+        else if (labelText.includes('place in building') || labelText === 'place in building') {
+            wordType = 'place in building';
+        }
+        else if (labelText.includes('place outdoors') || labelText === 'place outdoors') {
+            wordType = 'place outdoors';
+        }
+        else if (labelText.includes('outdoor area') || labelText === 'outdoor area') {
+            wordType = 'outdoor area';
+        }
+        else if (labelText.includes('place animals live') || labelText === 'place animals live') {
+            wordType = 'place animals live';
+        }
+        else if (labelText.includes('large object') || labelText === 'large object') {
+            wordType = 'large object';
+        }
+        else if (labelText.includes('tool or object') || labelText === 'tool or object') {
+            wordType = 'tool or object';
+        }
+        else if (labelText.includes('abstract concept') || labelText === 'abstract concept') {
+            wordType = 'abstract concept';
         }
         // Direct match first
         else if (wordSuggestions[wordType]) {

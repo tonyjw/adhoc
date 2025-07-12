@@ -1,0 +1,25 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="55" fill="#FCE38A" stroke="#7B68EE" stroke-width="4"/>
+  
+  <!-- Open book -->
+  <path d="M25 45 Q25 40 30 40 L55 40 Q60 45 60 50 L60 80 Q60 85 55 85 L30 85 Q25 80 25 75 Z" fill="#fff"/>
+  <path d="M95 45 Q95 40 90 40 L65 40 Q60 45 60 50 L60 80 Q60 85 65 85 L90 85 Q95 80 95 75 Z" fill="#fff"/>
+  
+  <!-- Book spine -->
+  <line x1="60" y1="45" x2="60" y2="85" stroke="#7B68EE" stroke-width="2"/>
+  
+  <!-- Text lines -->
+  <line x1="32" y1="55" x2="50" y2="55" stroke="#ccc" stroke-width="2"/>
+  <line x1="32" y1="62" x2="48" y2="62" stroke="#ccc" stroke-width="2"/>
+  <line x1="32" y1="69" x2="52" y2="69" stroke="#ccc" stroke-width="2"/>
+  <line x1="70" y1="55" x2="88" y2="55" stroke="#ccc" stroke-width="2"/>
+  <line x1="72" y1="62" x2="88" y2="62" stroke="#ccc" stroke-width="2"/>
+  <line x1="68" y1="69" x2="88" y2="69" stroke="#ccc" stroke-width="2"/>
+  
+  <!-- Magic stars -->
+  <path d="M40 25 L42 31 L48 31 L43 35 L45 41 L40 37 L35 41 L37 35 L32 31 L38 31 Z" fill="#7B68EE"/>
+  <path d="M80 30 L81 34 L85 34 L82 36 L83 40 L80 38 L77 40 L78 36 L75 34 L79 34 Z" fill="#7B68EE"/>
+  <path d="M20 65 L21 68 L24 68 L22 70 L23 73 L20 71 L17 73 L18 70 L16 68 L19 68 Z" fill="#7B68EE"/>
+  <path d="M100 70 L101 73 L104 73 L102 75 L103 78 L100 76 L97 78 L98 75 L96 73 L99 73 Z" fill="#7B68EE"/>
+</svg>

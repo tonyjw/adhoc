@@ -7,9 +7,9 @@
 
 :root {
     /* New child-friendly color palette */
-    --primary-color: #e07a7a; /* Coral/pink for logo and buttons */
-    --primary-hover: #dc6b6b;
-    --secondary-color: #87ceeb; /* Light blue/teal for book icon */
+    --primary-color: #7B68EE; /* Purple for logo and buttons */
+    --primary-hover: #6A5ACD;
+    --secondary-color: #7B68EE; /* Purple for icons and accents */
     --accent-color: #f5e6a8; /* Warm cream/yellow for button backgrounds */
     --success-color: #82c999;
     --danger-color: #e74c3c;
@@ -123,13 +123,19 @@ body {
     padding: 0;
 }
 
+.logo-icon img {
+    width: 64px;
+    height: 64px;
+    display: block;
+}
+
 .logo-icon.clickable {
     cursor: pointer;
     transition: all 0.2s ease;
-    padding: 0.25rem;
+    padding: 0.5rem;
     border-radius: 50%;
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 80px;
+    min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;

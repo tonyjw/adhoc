@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adhoc - A Story Generator for Families</title>
+    <link rel="icon" type="image/svg+xml" href="assets/adhoc-icon.svg">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +24,9 @@
         <!-- Header -->
         <header class="app-header">
             <div class="logo">
-                <button id="logoBookIcon" class="logo-icon clickable" title="Back to Themes">📖</button>
+                <button id="logoBookIcon" class="logo-icon clickable" title="Back to Themes">
+                    <img src="assets/adhoc-icon.svg" alt="Adhoc Logo" width="64" height="64">
+                </button>
                 <h1 class="logo-text">adhoc</h1>
                 <p class="logo-subtitle">the story generator for kids</p>
             </div>
@@ -40,7 +43,7 @@
                     <h2 class="welcome-title">Welcome to Adhoc</h2>
                     <p class="welcome-description">Choose a story theme and fill in the blanks to create your own unique tales!</p>
                     <button id="randomThemeBtn" class="random-theme-btn">
-                        🎲 Surprise Me!
+                        <img src="assets/sparkle-icon.svg" alt="✨" width="20" height="20" style="vertical-align: middle; margin-right: 8px;"> Surprise Me!
                     </button>
                 </div>
                 
@@ -82,7 +85,7 @@
                                 autocomplete="off"
                             >
                             <button type="button" id="surpriseMeBtn" class="surprise-btn" title="Surprise Me">
-                                ✨
+                                <img src="assets/sparkle-icon.svg" alt="✨" width="16" height="16">
                             </button>
                         </div>
                         <div id="inputError" class="input-error" style="display: none;"></div>

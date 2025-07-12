@@ -32,13 +32,13 @@ A modern, interactive Mad Libs website built with vanilla HTML, CSS, and JavaScr
 2. Serve the files using a local web server:
    ```bash
    # Using Python
-   python3 -m http.server 8080
+   python3 -m http.server 8081
    
    # Using Node.js
    npx serve .
    
    # Using PHP
-   php -S localhost:8080
+   php -S localhost:8081
    ```
 
 ## Project Structure
