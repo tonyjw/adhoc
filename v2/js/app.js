@@ -1,5 +1,5 @@
-// Mad Libs Application
-class MadLibsApp {
+// Adhoc Story Generator Application
+class AdhocApp {
     constructor() {
         this.themes = [];
         this.currentTheme = null;
@@ -59,8 +59,10 @@ class MadLibsApp {
         // Theme selection
         document.getElementById('randomThemeBtn').addEventListener('click', () => this.selectRandomTheme());
         
+        // Logo book icon click to go back to themes
+        document.getElementById('logoBookIcon').addEventListener('click', () => this.showScreen('themeSelection'));
+        
         // Word input form
-        document.getElementById('backToThemes').addEventListener('click', () => this.showScreen('themeSelection'));
         document.getElementById('wordForm').addEventListener('submit', (e) => this.handleWordSubmit(e));
         document.getElementById('prevWordBtn').addEventListener('click', () => this.previousWord());
         document.getElementById('surpriseMeBtn').addEventListener('click', () => this.surpriseMe());
@@ -86,6 +88,9 @@ class MadLibsApp {
         
         // Word input real-time validation
         document.getElementById('currentWordInput').addEventListener('input', () => this.validateCurrentInput());
+        
+        // Debug mode
+        document.getElementById('debugClose').addEventListener('click', () => this.hideDebugMode());
     }
 
     // Screen management
@@ -187,8 +192,18 @@ class MadLibsApp {
         const label = document.getElementById('currentWordLabel');
         const input = document.getElementById('currentWordInput');
         
-        label.textContent = `Enter a ${currentBlank.label}:`;
-        input.placeholder = `Type your ${currentBlank.type} here...`;
+        // Check if this is asking for a person's name and update the display
+        const labelText = currentBlank.label.toLowerCase();
+        let displayLabel = currentBlank.label;
+        let placeholderText = `Type your ${currentBlank.type} here...`;
+        
+        if (labelText.includes('name') || labelText.includes('person')) {
+            displayLabel = "person's name";
+            placeholderText = 'Type a name here...';
+        }
+        
+        label.textContent = `Enter a ${displayLabel}:`;
+        input.placeholder = placeholderText;
         input.value = this.currentWords[currentBlank.id] || '';
         
         // Update navigation buttons
@@ -241,14 +256,33 @@ class MadLibsApp {
             return false;
         }
         
-        if (word.length < 2) {
-            this.showInputError('Please enter a word with at least 2 characters.');
+        if (word.length < 1) {
+            this.showInputError('Please enter at least one character.');
             return false;
         }
         
-        if (!/^[a-zA-Z\s'-]+$/.test(word)) {
-            this.showInputError('Please use only letters, spaces, hyphens, and apostrophes.');
-            return false;
+        // Get the current word type
+        const currentBlank = this.currentTheme.blanks[this.currentWordIndex];
+        const wordType = currentBlank.type.toLowerCase();
+        
+        // Different validation based on word type
+        if (wordType === 'number') {
+            // Allow numbers, decimals, and basic number formats
+            if (!/^[0-9]+(\.[0-9]+)?$/.test(word)) {
+                this.showInputError('Please enter a valid number.');
+                return false;
+            }
+        } else {
+            // For all other word types, allow letters, spaces, hyphens, and apostrophes
+            if (!/^[a-zA-Z\s'-]+$/.test(word)) {
+                this.showInputError('Please use only letters, spaces, hyphens, and apostrophes.');
+                return false;
+            }
+            
+            if (word.length < 2) {
+                this.showInputError('Please enter a word with at least 2 characters.');
+                return false;
+            }
         }
         
         this.hideInputError();
@@ -322,14 +356,24 @@ class MadLibsApp {
             'food': ['taco', 'marshmallow', 'pickle', 'donut', 'spaghetti', 'waffle', 'burrito', 'cupcake', 'pretzel', 'bagel'],
             'plural noun': ['socks', 'bubbles', 'cookies', 'buttons', 'feathers', 'marbles', 'springs', 'jellybeans', 'mittens', 'shoelaces'],
             'emotion': ['excited', 'confused', 'amazed', 'delighted', 'puzzled', 'thrilled', 'surprised', 'cheerful', 'curious', 'ecstatic'],
-            'number': ['42', '7', '99', '13', '1000', '3.14', '777', '21', '88', '365']
+            'number': ['42', '7', '99', '13', '1000', '3.14', '777', '21', '88', '365'],
+            'name': ['Alex', 'Sam', 'Jordan', 'Casey', 'Taylor', 'Riley', 'Morgan', 'Avery', 'Quinn', 'Sage', 'Max', 'Luna', 'Leo', 'Zoe', 'Kai']
         };
         
-        // Find matching word type
-        let wordType = currentBlank.type.toLowerCase();
+        // Find matching word type - improved logic
+        let wordType = currentBlank.type.toLowerCase().trim();
+        const labelText = currentBlank.label.toLowerCase();
         
-        // Handle special cases
-        if (wordType.includes('plural')) {
+        // Check if this is asking for a person's name
+        if (labelText.includes('name') || labelText.includes('person')) {
+            wordType = 'name';
+        }
+        // Direct match first
+        else if (wordSuggestions[wordType]) {
+            // Use direct match
+        }
+        // Handle special cases with more specific matching
+        else if (wordType.includes('plural') && wordType.includes('noun')) {
             wordType = 'plural noun';
         } else if (wordType.includes('noun')) {
             wordType = 'noun';
@@ -339,9 +383,28 @@ class MadLibsApp {
             wordType = 'verb';
         } else if (wordType.includes('adverb')) {
             wordType = 'adverb';
+        } else if (wordType.includes('color')) {
+            wordType = 'color';
+        } else if (wordType.includes('animal')) {
+            wordType = 'animal';
+        } else if (wordType.includes('food')) {
+            wordType = 'food';
+        } else if (wordType.includes('emotion')) {
+            wordType = 'emotion';
+        } else if (wordType.includes('number')) {
+            wordType = 'number';
+        } else {
+            // Default fallback
+            wordType = 'noun';
         }
         
-        const suggestions = wordSuggestions[wordType] || wordSuggestions['noun'];
+        // Get suggestions array with safety check
+        let suggestions = wordSuggestions[wordType];
+        if (!suggestions || !Array.isArray(suggestions) || suggestions.length === 0) {
+            console.warn(`No suggestions found for word type: ${wordType}, using noun fallback`);
+            suggestions = wordSuggestions['noun'];
+        }
+        
         const randomWord = suggestions[Math.floor(Math.random() * suggestions.length)];
         
         input.value = randomWord;
@@ -673,6 +736,45 @@ class MadLibsApp {
                 break;
         }
     }
+    
+    // Debug mode methods
+    showDebugMode() {
+        const debugMode = document.getElementById('debugMode');
+        const debugData = document.getElementById('debugData');
+        
+        let html = '<h3>Available Themes and Story Templates</h3>';
+        
+        this.themes.forEach((theme, index) => {
+            html += `
+                <div class="theme-debug">
+                    <h4>${theme.title} (${theme.id})</h4>
+                    <p><strong>Description:</strong> ${theme.description}</p>
+                    <p><strong>Icon:</strong> ${theme.icon}</p>
+                    <p><strong>Number of blanks:</strong> ${theme.blanks.length}</p>
+                    <details>
+                        <summary>View Blanks</summary>
+                        <pre>${JSON.stringify(theme.blanks, null, 2)}</pre>
+                    </details>
+                    <details>
+                        <summary>View Template</summary>
+                        <pre>${theme.template}</pre>
+                    </details>
+                    <details>
+                        <summary>View Full JSON</summary>
+                        <pre>${JSON.stringify(theme, null, 2)}</pre>
+                    </details>
+                </div>
+            `;
+        });
+        
+        debugData.innerHTML = html;
+        debugMode.classList.add('active');
+    }
+    
+    hideDebugMode() {
+        const debugMode = document.getElementById('debugMode');
+        debugMode.classList.remove('active');
+    }
 }
 
 // Sound effects (simple Web Audio API implementation)
@@ -728,7 +830,7 @@ class SoundManager {
 
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    window.app = new MadLibsApp();
+    window.app = new AdhocApp();
     window.soundManager = new SoundManager();
     
     // Add sound effects to button clicks
@@ -755,6 +857,14 @@ document.addEventListener('DOMContentLoaded', () => {
             window.soundManager.playError();
         }
     };
+    
+    // Debug mode activation (Ctrl+Shift+D)
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+            e.preventDefault();
+            window.app.showDebugMode();
+        }
+    });
 });
 
 // Service Worker registration for offline capability (optional)

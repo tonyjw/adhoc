@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adhoc - Mad Libs Fun!</title>
+    <title>Adhoc - A Story Generator for Families</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -22,10 +22,11 @@
     <div id="app" class="app-container" style="display: none;">
         <!-- Header -->
         <header class="app-header">
-            <h1 class="logo">
-                <span class="logo-text">Adhoc</span>
-                <span class="logo-subtitle">Mad Libs</span>
-            </h1>
+            <div class="logo">
+                <button id="logoBookIcon" class="logo-icon clickable" title="Back to Themes">📖</button>
+                <h1 class="logo-text">adhoc</h1>
+                <p class="logo-subtitle">the story generator for kids</p>
+            </div>
             <nav class="nav-buttons">
                 <button id="homeBtn" class="nav-btn" style="display: none;">🏠 Home</button>
                 <button id="savedStoriesBtn" class="nav-btn" style="display: none;">📚 Saved Stories</button>
@@ -36,8 +37,8 @@
         <section id="themeSelection" class="screen active">
             <div class="screen-content">
                 <div class="welcome-section">
-                    <h2 class="welcome-title">Welcome to Adhoc Mad Libs!</h2>
-                    <p class="welcome-description">Choose a story theme and fill in the blanks to create hilarious tales!</p>
+                    <h2 class="welcome-title">Welcome to Adhoc</h2>
+                    <p class="welcome-description">Choose a story theme and fill in the blanks to create your own unique tales!</p>
                     <button id="randomThemeBtn" class="random-theme-btn">
                         🎲 Surprise Me!
                     </button>
@@ -53,7 +54,6 @@
         <section id="wordInputForm" class="screen">
             <div class="screen-content">
                 <div class="form-header">
-                    <button id="backToThemes" class="back-btn">← Back to Themes</button>
                     <div class="progress-section">
                         <div class="progress-bar">
                             <div id="progressFill" class="progress-fill"></div>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="story-info">
+                <div class="story-info" style="display: none;">
                     <h2 id="currentStoryTitle" class="story-title"></h2>
                     <p id="currentStoryDescription" class="story-description"></p>
                 </div>
@@ -81,8 +81,8 @@
                                 required
                                 autocomplete="off"
                             >
-                            <button type="button" id="surpriseMeBtn" class="surprise-btn">
-                                ✨ Surprise Me
+                            <button type="button" id="surpriseMeBtn" class="surprise-btn" title="Surprise Me">
+                                ✨
                             </button>
                         </div>
                         <div id="inputError" class="input-error" style="display: none;"></div>
@@ -161,6 +161,19 @@
             <div class="modal-actions">
                 <button id="confirmCancel" class="modal-btn secondary">Cancel</button>
                 <button id="confirmOk" class="modal-btn primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Debug Mode -->
+    <div id="debugMode" class="debug-mode">
+        <div class="debug-content">
+            <div class="debug-header">
+                <h2 class="debug-title">Debug Mode - Theme Data</h2>
+                <button id="debugClose" class="debug-close">Close</button>
+            </div>
+            <div id="debugData" class="debug-section">
+                <!-- Debug data will be populated here -->
             </div>
         </div>
     </div>
