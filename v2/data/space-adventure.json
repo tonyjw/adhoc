@@ -1,0 +1,21 @@
+{
+  "id": "space-adventure",
+  "title": "Space Adventure",
+  "description": "An exciting journey through the cosmos!",
+  "icon": "🚀",
+  "template": "Captain {noun1} was flying their {adjective1} spaceship through the {adjective2} galaxy when suddenly they spotted a {color} planet. They decided to {verb1} down to explore. As they landed, they discovered that the planet was inhabited by {adjective3} aliens who could {verb2} with their minds! The aliens invited Captain {noun1} to join them for a feast of {plural_noun1} and {liquid}. After eating, they all went to the {noun2} arena where they watched the locals {verb3} for entertainment. It was the most {adjective4} adventure Captain {noun1} had ever experienced!",
+  "blanks": [
+    {"id": "noun1", "type": "noun", "label": "Person's name"},
+    {"id": "adjective1", "type": "adjective", "label": "Adjective"},
+    {"id": "adjective2", "type": "adjective", "label": "Adjective"},
+    {"id": "color", "type": "color", "label": "Color"},
+    {"id": "verb1", "type": "verb", "label": "Verb"},
+    {"id": "adjective3", "type": "adjective", "label": "Adjective"},
+    {"id": "verb2", "type": "verb", "label": "Verb"},
+    {"id": "plural_noun1", "type": "plural noun", "label": "Plural noun (food)"},
+    {"id": "liquid", "type": "noun", "label": "Type of drink"},
+    {"id": "noun2", "type": "noun", "label": "Large place or building"},
+    {"id": "verb3", "type": "verb", "label": "Verb ending in -ing"},
+    {"id": "adjective4", "type": "adjective", "label": "Adjective"}
+  ]
+}

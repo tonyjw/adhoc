@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adhoc - Mad Libs Fun!</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Loading your stories...</p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="app" class="app-container" style="display: none;">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="logo">
+                <span class="logo-text">Adhoc</span>
+                <span class="logo-subtitle">Mad Libs</span>
+            </h1>
+            <nav class="nav-buttons">
+                <button id="homeBtn" class="nav-btn" style="display: none;">🏠 Home</button>
+                <button id="savedStoriesBtn" class="nav-btn" style="display: none;">📚 Saved Stories</button>
+            </nav>
+        </header>
+
+        <!-- Theme Selection Screen -->
+        <section id="themeSelection" class="screen active">
+            <div class="screen-content">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Welcome to Adhoc Mad Libs!</h2>
+                    <p class="welcome-description">Choose a story theme and fill in the blanks to create hilarious tales!</p>
+                    <button id="randomThemeBtn" class="random-theme-btn">
+                        🎲 Surprise Me!
+                    </button>
+                </div>
+                
+                <div class="themes-grid" id="themesGrid">
+                    <!-- Theme cards will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Word Input Form Screen -->
+        <section id="wordInputForm" class="screen">
+            <div class="screen-content">
+                <div class="form-header">
+                    <button id="backToThemes" class="back-btn">← Back to Themes</button>
+                    <div class="progress-section">
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                        <p id="progressText" class="progress-text">Word 1 of 12</p>
+                    </div>
+                </div>
+
+                <div class="story-info">
+                    <h2 id="currentStoryTitle" class="story-title"></h2>
+                    <p id="currentStoryDescription" class="story-description"></p>
+                </div>
+
+                <form id="wordForm" class="word-form">
+                    <div class="word-input-section">
+                        <label id="currentWordLabel" class="word-label" for="currentWordInput">
+                            Enter a noun:
+                        </label>
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="currentWordInput" 
+                                class="word-input" 
+                                placeholder="Type your word here..."
+                                required
+                                autocomplete="off"
+                            >
+                            <button type="button" id="surpriseMeBtn" class="surprise-btn">
+                                ✨ Surprise Me
+                            </button>
+                        </div>
+                        <div id="inputError" class="input-error" style="display: none;"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="prevWordBtn" class="nav-word-btn" disabled>
+                            ← Previous
+                        </button>
+                        <button type="submit" id="nextWordBtn" class="nav-word-btn primary">
+                            Next →
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Story Display Screen -->
+        <section id="storyDisplay" class="screen">
+            <div class="screen-content">
+                <div class="story-header">
+                    <button id="backToForm" class="back-btn">← Edit Words</button>
+                    <div class="story-actions">
+                        <button id="saveStoryBtn" class="action-btn">💾 Save Story</button>
+                        <button id="shareStoryBtn" class="action-btn">📤 Share</button>
+                    </div>
+                </div>
+
+                <div class="story-container">
+                    <h2 id="finalStoryTitle" class="final-story-title"></h2>
+                    <div id="storyContent" class="story-content">
+                        <!-- Generated story will appear here -->
+                    </div>
+                </div>
+
+                <div class="story-footer">
+                    <button id="playAgainBtn" class="play-again-btn">
+                        🎭 Play Again
+                    </button>
+                    <button id="newThemeBtn" class="new-theme-btn">
+                        🎨 Try Different Theme
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Saved Stories Screen -->
+        <section id="savedStories" class="screen">
+            <div class="screen-content">
+                <div class="saved-header">
+                    <h2 class="saved-title">Your Saved Stories</h2>
+                    <button id="clearAllBtn" class="clear-all-btn">🗑️ Clear All</button>
+                </div>
+                <div id="savedStoriesContainer" class="saved-stories-container">
+                    <!-- Saved stories will appear here -->
+                </div>
+                <div id="noSavedStories" class="no-saved-stories" style="display: none;">
+                    <p>You haven't saved any stories yet!</p>
+                    <button id="startCreatingBtn" class="start-creating-btn">Start Creating Stories</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast" style="display: none;">
+        <span id="toastMessage"></span>
+        <button id="toastClose" class="toast-close">×</button>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 id="confirmTitle">Confirm Action</h3>
+            <p id="confirmMessage">Are you sure you want to proceed?</p>
+            <div class="modal-actions">
+                <button id="confirmCancel" class="modal-btn secondary">Cancel</button>
+                <button id="confirmOk" class="modal-btn primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

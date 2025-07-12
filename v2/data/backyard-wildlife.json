@@ -1,0 +1,33 @@
+{
+  "id": "backyard-wildlife",
+  "title": "Backyard Wildlife",
+  "description": "Nature's comedy right outside your door!",
+  "icon": "🐿️",
+  "template": "In {noun1}'s backyard, there lived a {adjective1} {animal1} named {noun2}. Every morning, {noun2} would {verb1} around the {noun3} looking for {plural_noun1} to eat. One day, a {adjective2} {animal2} moved into the {noun4} and started {verb2} very loudly. This made {noun2} feel {emotion} because they couldn't {verb3} properly anymore. The two animals decided to have a {adjective3} competition to see who could {verb4} the fastest. {noun1} watched from their {noun5} window and couldn't stop {verb5} at the {adjective4} sight. In the end, both animals became {adjective5} friends and would {verb6} together every {time_of_day}, sharing {number} {plural_noun2} and telling {adjective6} stories.",
+  "blanks": [
+    {"id": "noun1", "type": "noun", "label": "Person's name"},
+    {"id": "adjective1", "type": "adjective", "label": "Adjective"},
+    {"id": "animal1", "type": "noun", "label": "Small animal"},
+    {"id": "noun2", "type": "noun", "label": "Animal's name"},
+    {"id": "verb1", "type": "verb", "label": "Verb"},
+    {"id": "noun3", "type": "noun", "label": "Outdoor area"},
+    {"id": "plural_noun1", "type": "plural noun", "label": "Plural noun (food)"},
+    {"id": "adjective2", "type": "adjective", "label": "Adjective"},
+    {"id": "animal2", "type": "noun", "label": "Bird or small animal"},
+    {"id": "noun4", "type": "noun", "label": "Place animals live"},
+    {"id": "verb2", "type": "verb", "label": "Verb ending in -ing"},
+    {"id": "emotion", "type": "adjective", "label": "Emotion"},
+    {"id": "verb3", "type": "verb", "label": "Verb"},
+    {"id": "adjective3", "type": "adjective", "label": "Adjective"},
+    {"id": "verb4", "type": "verb", "label": "Verb"},
+    {"id": "noun5", "type": "noun", "label": "Type of room"},
+    {"id": "verb5", "type": "verb", "label": "Verb ending in -ing"},
+    {"id": "adjective4", "type": "adjective", "label": "Adjective"},
+    {"id": "adjective5", "type": "adjective", "label": "Adjective (positive)"},
+    {"id": "verb6", "type": "verb", "label": "Verb"},
+    {"id": "time_of_day", "type": "noun", "label": "Time of day"},
+    {"id": "number", "type": "number", "label": "Number"},
+    {"id": "plural_noun2", "type": "plural noun", "label": "Plural noun"},
+    {"id": "adjective6", "type": "adjective", "label": "Adjective"}
+  ]
+}

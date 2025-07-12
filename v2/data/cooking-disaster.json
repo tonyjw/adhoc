@@ -1,0 +1,26 @@
+{
+  "id": "cooking-disaster",
+  "title": "Cooking Disaster",
+  "description": "A kitchen catastrophe in the making!",
+  "icon": "🍳",
+  "template": "Chef {noun1} was preparing for the {adjective1} cooking competition. They decided to make their famous {adjective2} {food} recipe. First, they gathered {number} {plural_noun1} and mixed them with {liquid} in a {adjective3} bowl. Then they {verb1} the mixture for {number2} minutes until it turned {color}. Suddenly, the {noun2} started to {verb2} and smoke filled the kitchen! Chef {noun1} {adverb} grabbed a {noun3} to put out the fire. The judges arrived and tasted the {adjective4} creation. To everyone's surprise, they declared it the most {adjective5} dish they had ever eaten!",
+  "blanks": [
+    {"id": "noun1", "type": "noun", "label": "Person's name"},
+    {"id": "adjective1", "type": "adjective", "label": "Adjective"},
+    {"id": "adjective2", "type": "adjective", "label": "Adjective"},
+    {"id": "food", "type": "noun", "label": "Type of food"},
+    {"id": "number", "type": "number", "label": "Number"},
+    {"id": "plural_noun1", "type": "plural noun", "label": "Plural noun (ingredient)"},
+    {"id": "liquid", "type": "noun", "label": "Type of liquid"},
+    {"id": "adjective3", "type": "adjective", "label": "Adjective (size)"},
+    {"id": "verb1", "type": "verb", "label": "Verb (past tense)"},
+    {"id": "number2", "type": "number", "label": "Number"},
+    {"id": "color", "type": "color", "label": "Color"},
+    {"id": "noun2", "type": "noun", "label": "Kitchen appliance"},
+    {"id": "verb2", "type": "verb", "label": "Verb"},
+    {"id": "adverb", "type": "adverb", "label": "Adverb"},
+    {"id": "noun3", "type": "noun", "label": "Object"},
+    {"id": "adjective4", "type": "adjective", "label": "Adjective"},
+    {"id": "adjective5", "type": "adjective", "label": "Adjective (positive)"}
+  ]
+}

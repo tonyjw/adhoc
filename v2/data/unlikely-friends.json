@@ -1,0 +1,30 @@
+{
+  "id": "unlikely-friends",
+  "title": "Unlikely New Friends",
+  "description": "An unexpected friendship blooms!",
+  "icon": "🤝",
+  "template": "One {adjective1} morning, {noun1} was {verb1} through the {noun2} when they bumped into a {adjective2} {animal}. At first, {noun1} was {emotion}, but the {animal} started to {verb2} in a {adjective3} way. They decided to {verb3} together to the {noun3} where they shared {number} {plural_noun1}. The {animal} taught {noun1} how to {verb4} like a professional, while {noun1} showed the {animal} how to {verb5} using a {noun4}. From that day forward, they would meet every {day_of_week} to {verb6} and talk about {adjective4} things. Their friendship became so {adjective5} that everyone in town would {verb7} when they saw them together.",
+  "blanks": [
+    {"id": "adjective1", "type": "adjective", "label": "Adjective (weather)"},
+    {"id": "noun1", "type": "noun", "label": "Person's name"},
+    {"id": "verb1", "type": "verb", "label": "Verb ending in -ing"},
+    {"id": "noun2", "type": "noun", "label": "Place outdoors"},
+    {"id": "adjective2", "type": "adjective", "label": "Adjective (size)"},
+    {"id": "animal", "type": "noun", "label": "Type of animal"},
+    {"id": "emotion", "type": "adjective", "label": "Emotion"},
+    {"id": "verb2", "type": "verb", "label": "Verb"},
+    {"id": "adjective3", "type": "adjective", "label": "Adjective"},
+    {"id": "verb3", "type": "verb", "label": "Verb"},
+    {"id": "noun3", "type": "noun", "label": "Place"},
+    {"id": "number", "type": "number", "label": "Number"},
+    {"id": "plural_noun1", "type": "plural noun", "label": "Plural noun (food)"},
+    {"id": "verb4", "type": "verb", "label": "Verb"},
+    {"id": "verb5", "type": "verb", "label": "Verb"},
+    {"id": "noun4", "type": "noun", "label": "Tool or object"},
+    {"id": "day_of_week", "type": "noun", "label": "Day of the week"},
+    {"id": "verb6", "type": "verb", "label": "Verb"},
+    {"id": "adjective4", "type": "adjective", "label": "Adjective"},
+    {"id": "adjective5", "type": "adjective", "label": "Adjective (positive)"},
+    {"id": "verb7", "type": "verb", "label": "Verb"}
+  ]
+}

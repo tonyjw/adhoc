@@ -1,0 +1,30 @@
+{
+  "id": "superhero-mishap",
+  "title": "Superhero Mishap",
+  "description": "Even heroes have their off days!",
+  "icon": "🦸",
+  "template": "Captain {noun1} woke up on a {adjective1} {day_of_week} morning and put on their {color} superhero costume. They had heard that the evil Dr. {noun2} was planning to {verb1} all the {plural_noun1} in the city using their {adjective2} {noun3} machine. Captain {noun1} {adverb} flew to the {noun4} building where Dr. {noun2} was hiding. But when they tried to use their {adjective3} powers, nothing happened! Instead of {verb2}, they could only {verb3} in a {adjective4} way. The citizens below started to {verb4} as they watched their hero {verb5} around like a {adjective5} {animal}. Fortunately, Dr. {noun2} was laughing so hard at the {adjective6} spectacle that they forgot to activate their machine, and the city was saved by pure {noun5}!",
+  "blanks": [
+    {"id": "noun1", "type": "noun", "label": "Superhero name"},
+    {"id": "adjective1", "type": "adjective", "label": "Adjective"},
+    {"id": "day_of_week", "type": "noun", "label": "Day of the week"},
+    {"id": "color", "type": "color", "label": "Color"},
+    {"id": "noun2", "type": "noun", "label": "Villain name"},
+    {"id": "verb1", "type": "verb", "label": "Verb"},
+    {"id": "plural_noun1", "type": "plural noun", "label": "Plural noun"},
+    {"id": "adjective2", "type": "adjective", "label": "Adjective (scary)"},
+    {"id": "noun3", "type": "noun", "label": "Large object"},
+    {"id": "adverb", "type": "adverb", "label": "Adverb"},
+    {"id": "noun4", "type": "noun", "label": "Type of building"},
+    {"id": "adjective3", "type": "adjective", "label": "Adjective (powerful)"},
+    {"id": "verb2", "type": "verb", "label": "Verb (superhero action)"},
+    {"id": "verb3", "type": "verb", "label": "Silly verb"},
+    {"id": "adjective4", "type": "adjective", "label": "Adjective (silly)"},
+    {"id": "verb4", "type": "verb", "label": "Verb"},
+    {"id": "verb5", "type": "verb", "label": "Verb ending in -ing"},
+    {"id": "adjective5", "type": "adjective", "label": "Adjective"},
+    {"id": "animal", "type": "noun", "label": "Animal"},
+    {"id": "adjective6", "type": "adjective", "label": "Adjective"},
+    {"id": "noun5", "type": "noun", "label": "Abstract concept"}
+  ]
+}

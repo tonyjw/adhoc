@@ -1,0 +1,27 @@
+{
+  "id": "office-drama",
+  "title": "Office Drama",
+  "description": "Another day at the corporate jungle!",
+  "icon": "💼",
+  "template": "{noun1} walked into the {adjective1} office building on {day_of_week} morning, carrying their {adjective2} briefcase. They noticed that someone had {verb1} all the {plural_noun1} from the break room! The office manager, {noun2}, was {adverb} investigating the situation. Meanwhile, the {adjective3} printer was making {adjective4} noises and spitting out {color} papers everywhere. During the meeting, everyone had to {verb2} while discussing the {adjective5} quarterly reports. By lunchtime, {noun1} decided to {verb3} to the {noun3} and eat {number} {plural_noun2} while hiding from their {adjective6} boss.",
+  "blanks": [
+    {"id": "noun1", "type": "noun", "label": "Person's name"},
+    {"id": "adjective1", "type": "adjective", "label": "Adjective (size)"},
+    {"id": "day_of_week", "type": "noun", "label": "Day of the week"},
+    {"id": "adjective2", "type": "adjective", "label": "Adjective"},
+    {"id": "verb1", "type": "verb", "label": "Verb (past tense)"},
+    {"id": "plural_noun1", "type": "plural noun", "label": "Plural noun (office supplies)"},
+    {"id": "noun2", "type": "noun", "label": "Person's name"},
+    {"id": "adverb", "type": "adverb", "label": "Adverb"},
+    {"id": "adjective3", "type": "adjective", "label": "Adjective"},
+    {"id": "adjective4", "type": "adjective", "label": "Adjective (sound)"},
+    {"id": "color", "type": "color", "label": "Color"},
+    {"id": "verb2", "type": "verb", "label": "Verb"},
+    {"id": "adjective5", "type": "adjective", "label": "Adjective"},
+    {"id": "verb3", "type": "verb", "label": "Verb"},
+    {"id": "noun3", "type": "noun", "label": "Place in building"},
+    {"id": "number", "type": "number", "label": "Number"},
+    {"id": "plural_noun2", "type": "plural noun", "label": "Plural noun (food)"},
+    {"id": "adjective6", "type": "adjective", "label": "Adjective (describing personality)"}
+  ]
+}
